@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password', 255);
             $table->string('adresse', 255)->nullable();
             $table->string('numtel', 20)->nullable();
-            $table->enum('role', ['admin', 'visiteur', 'client', 'livreur']);
+            $table->boolean('is_admin')->default(false);
             $table->timestamps();
     });
 
@@ -33,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+            Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('is_admin');
+        });
     }
 };

@@ -63,17 +63,6 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <!-- Rôle -->
-        <div class="mt-4">
-            <x-input-label for="role" :value="('Rôle')" />
-            <select id="role" name="role" class="block mt-1 w-full" required>
-                <option value="client">Client</option>
-                <option value="admin">Admin</option>
-                <option value="livreur">Livreur</option>
-                <option value="visiteur">Visiteur</option>
-            </select>
-            <x-input-error :messages="$errors->get('role')" class="mt-2" />
-        </div>
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
@@ -81,6 +70,7 @@
             </a>
 
             <x-primary-button class="ml-4">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('accueilh') }}">
                 {{ __('Register') }}
             </x-primary-button>
         </div>

@@ -49,13 +49,13 @@ class RegisteredUserController extends Controller
             'numtel' => $request->numtel,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => $request->role
+            'role' => 'client', // par défaut
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('register')->with('status', 'Inscription réussie ! Vous pouvez maintenant vous connecter.');
     }
 }

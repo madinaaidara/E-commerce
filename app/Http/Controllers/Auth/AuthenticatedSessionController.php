@@ -29,13 +29,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if (auth()->user()->role === 'client') {
-            return redirect()->route('client.dashboard');
+        if ($user->role === 'client') {
+            return redirect()->route('home'); // page d’accueil client
         }
         if (auth()->user()->role === 'admin') {
             return redirect()->route('admin.dashboard');
         }
-        // tu peux ajouter pour livreur, etc.
+       
         if (auth()->user()->role === 'livreur') {
             return redirect()->route('livreur.dashboard');
         }
